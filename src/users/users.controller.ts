@@ -13,7 +13,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 
   //@Cron('* * * * * *')
-  @Cron(CronExpression.EVERY_30_SECONDS)
+  @Cron(CronExpression.EVERY_5_MINUTES)
   updateAll() {
     console.log("Passou 5 min");
     return this.usersService.updateAll();
