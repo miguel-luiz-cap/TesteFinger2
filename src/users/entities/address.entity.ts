@@ -1,11 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, RelationId, JoinColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, RelationId, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
 import { Geo } from "./geo.entity";
 
 @Entity()
 export class Address {
-  @JoinColumn({ name: "AddId", referencedColumnName: "AddId" })
-  @PrimaryGeneratedColumn("increment")
-  AddId: number;
+  //@JoinColumn({ name: "AddId", referencedColumnName: "AddId" })
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({ type: "varchar", length: "100" })
   street: string;
@@ -19,7 +19,7 @@ export class Address {
   @Column({ type: "varchar", length: "100" })
   zipcode: string;
 
-  @ManyToOne(() => Geo, geo => geo.GeoId)
+  @OneToOne(() => Geo, geo => geo.id, {cascade: true})
   @JoinColumn()
   geo: Geo;
 

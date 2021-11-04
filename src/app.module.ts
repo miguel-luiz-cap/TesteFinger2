@@ -9,6 +9,7 @@ import { User } from './users/entities/user.entity';
 import { Address } from './users/entities/address.entity';
 import { Company } from './users/entities/company.entity';
 import { Geo } from './users/entities/geo.entity';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { Geo } from './users/entities/geo.entity';
     }),
     HttpModule,
     UsersModule,
+    ScheduleModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -3,54 +3,109 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { Address } from './entities/address.entity';
+import { Company } from './entities/company.entity';
+import { Geo } from './entities/geo.entity';
+import { Cron, CronExpression } from '@nestjs/schedule';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 
+  //@Cron('* * * * * *')
+  @Cron(CronExpression.EVERY_30_SECONDS)
+  updateAll() {
+    console.log("Passou 5 min");
+    return this.usersService.updateAll();
+  }
+
   @Get()
   index(): Promise<User[]> {
-    return this.usersService.findAll();
+    return this.usersService.findAllUser();
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  findAllUser() {
+    return this.usersService.findAllUser();
+  }
+  @Get('address')
+  findAllAddress() {
+    return this.usersService.findAllAddress();
+  }
+  @Get('company')
+  findAllCompany() {
+    return this.usersService.findAllCompany();
+  }
+  @Get('geo')
+  findAllGeo() {
+    return this.usersService.findAllGeo();
+  }
+  
+  @Get('criar')
+  createAll() {
+    return this.usersService.createAll();
   }
 
-  @Post('create')
-  async create(@Body() usersData: User): Promise<any> {
-    return this.usersService.create(usersData);
+  @Get('createUser')
+  async createUser(@Body() usersData: User): Promise<any> {
+    return this.usersService.createUser(usersData);
+  }
+
+  @Get('createAddress')
+  async createAddress(@Body() addressData: Address): Promise<any> {
+    return this.usersService.createAddress(addressData);
+  }
+
+  @Get('createCompany')
+  async createCompany(@Body() companyData: Company): Promise<any> {
+    return this.usersService.createCompany(companyData);
+  }
+
+  @Get('createGeo')
+  async createGeo(@Body() geoData: Geo): Promise<any> {
+    return this.usersService.createGeo(geoData);
   }
 
 
   @Put(':id/update')
-  async update(@Param('id') id, @Body() usersData: User): Promise<any> {
+  async updateUser(@Param('id') id, @Body() usersData: User): Promise<any> {
     usersData.id = Number(id);
     console.log('Update #' + usersData.id)
-    return this.usersService.update(usersData);
+    return this.usersService.updateUser(usersData);
+  }
+  @Put(':id/update')
+  async updateAddress(@Param('id') id, @Body() addressData: Address): Promise<any> {
+    addressData.id = Number(id);
+    console.log('Update #' + addressData.id)
+    return this.usersService.updateAddress(addressData);
+  }
+  @Put(':id/update')
+  async updateCompany(@Param('id') id, @Body() companyData: Company): Promise<any> {
+    companyData.id = Number(id);
+    console.log('Update #' + companyData.id)
+    return this.usersService.updateCompany(companyData);
+  }
+  @Put(':id/update')
+  async updateGeo(@Param('id') id, @Body() geoData: Geo): Promise<any> {
+    geoData.id = Number(id);
+    console.log('Update #' + geoData.id)
+    return this.usersService.updateGeo(geoData);
   }
 
   @Delete(':id/delete')
-    async delete(@Param('id') id): Promise<any> {
-      return this.usersService.delete(id);
-    }  
-  /*
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  async deleteUser(@Param('id') id): Promise<any> {
+    return this.usersService.deleteUser(id);
   }
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+  @Delete(':id/delete')
+  async deleteAddress(@Param('id') id): Promise<any> {
+    return this.usersService.deleteAddress(id);
   }
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  @Delete(':id/delete')
+  async deleteCompany(@Param('id') id): Promise<any> {
+    return this.usersService.deleteCompany(id);
   }
-
-  @Delete(':id')
-  delete(@Param('id') id: string) {
-    return this.usersService.delete(+id);
-  }*/
+  @Delete(':id/delete')
+  async deleteGeo(@Param('id') id): Promise<any> {
+    return this.usersService.deleteGeo(id);
+  }
 }

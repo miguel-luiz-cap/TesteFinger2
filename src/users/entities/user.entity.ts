@@ -1,10 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, RelationId, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, RelationId, OneToOne, JoinColumn } from 'typeorm';
 import { Company } from "./company.entity";
 import { Address } from "./address.entity";
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: "varchar", length: "100" })
@@ -16,7 +16,7 @@ export class User {
   @Column({ type: "varchar", length: "100" })
   email: string;
   
-  @ManyToOne(() => Address, address => address.AddId)
+  @OneToOne(() => Address, address => address.id, {cascade: true} )
   @JoinColumn()
   address: Address;
   
@@ -26,7 +26,7 @@ export class User {
   @Column({ type: "varchar", length: "100" })
   website: string;
   
-  @ManyToOne(() => Company, company => company.CompId)
+  @OneToOne(() => Company, company => company.id, {cascade: true})
   @JoinColumn()
   company: Company;
 
