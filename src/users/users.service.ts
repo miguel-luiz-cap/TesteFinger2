@@ -54,20 +54,29 @@ export class UsersService {
   async updateAll() {
     this.httpService.get('https://jsonplaceholder.typicode.com/users').subscribe( ( res ) => {
       console.log(res.data.length)
-      console.log(res.data.length)
       
-
       for(let i=0; i < res.data.length ; i++) {
-        this.userRepository.update(res.data[i].id, res.data[i])
+        this.userRepository.update(res.data[i].id, { 
+          name: res.data[i].name,
+          username: res.data[i].username,
+          email: res.data[i].email,
+          phone: res.data[i].phone,
+          website: res.data[i].website
+        } )
 
-        this.addressRepository.update(res.data[i].id, res.data[i].address)
+        this.addressRepository.update(res.data[i].id, {
+          street: res.data[i].address.street,
+          city: res.data[i].address.city,
+          suite: res.data[i].address.suite,
+          zipcode: res.data[i].address.zipcode
+        })
 
         this.companyRepository.update(res.data[i].id, res.data[i].company)
         this.geoRepository.update(res.data[i].id, res.data[i].address.geo)
       }
      }  );
   }
-
+  
   async createUser(user: User): Promise<User> {
     return await this.userRepository.save(user);
   }
