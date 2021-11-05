@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn, RelationId, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
-import { Geo } from "./geo.entity";
 
 @Entity()
 export class Address {
@@ -11,17 +10,12 @@ export class Address {
   street: string;
 
   @Column({ type: "varchar", length: "100" })
-  suite: string;
-  
-  @Column({ type: "varchar", length: "100" })
   city: string;
   
   @Column({ type: "varchar", length: "100" })
+  state: string;
+  
+  @Column({ type: "varchar", length: "100" })
   zipcode: string;
-
-  @OneToOne(() => Geo, geo => geo.id, {cascade: true})
-  @JoinColumn()
-  geo: Geo;
-
   
 }

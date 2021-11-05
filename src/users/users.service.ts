@@ -4,8 +4,7 @@ import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { Address } from './entities/address.entity';
-import { Company } from './entities/company.entity';
-import { Geo } from './entities/geo.entity';
+import { Contact } from './entities/contact.entity';
 import { HttpService } from '@nestjs/axios';
 
 @Injectable()
@@ -20,11 +19,8 @@ export class UsersService {
     @InjectRepository(Address)
     private addressRepository: Repository<Address>,
 
-    @InjectRepository(Company)
-    private companyRepository: Repository<Company>,
-
-    @InjectRepository(Geo)
-    private geoRepository: Repository<Geo>,
+    @InjectRepository(Contact)
+    private contactRepository: Repository<Contact>,
   ) { }
   
   async findAllUser(): Promise<User[]> {
@@ -33,14 +29,11 @@ export class UsersService {
   async findAllAddress(): Promise<Address[]> {
     return await this.addressRepository.find();
   }
-  async findAllCompany(): Promise<Company[]> {
-    return await this.companyRepository.find();
-  }
-  async findAllGeo(): Promise<Geo[]> {
-    return await this.geoRepository.find();
+  async findAllContact(): Promise<Contact[]> {
+    return await this.contactRepository.find();
   }
 
-  async createAll() {
+  /*async createAll() {
     this.httpService.get('https://jsonplaceholder.typicode.com/users').subscribe( ( res ) => {
       //console.log(res.data)
       this.userRepository.save(res.data)
@@ -71,23 +64,21 @@ export class UsersService {
           zipcode: res.data[i].address.zipcode
         })
 
-        this.companyRepository.update(res.data[i].id, res.data[i].company)
+        this.contactRepository.update(res.data[i].id, res.data[i].contact)
         this.geoRepository.update(res.data[i].id, res.data[i].address.geo)
       }
      }  );
   }
-  
+  */
+
   async createUser(user: User): Promise<User> {
     return await this.userRepository.save(user);
   }
   async createAddress(address: Address): Promise<Address> {
     return await this.addressRepository.save(address);
   }
-  async createCompany(company: Company): Promise<Company> {
-    return await this.companyRepository.save(company);
-  }
-  async createGeo(geo: Geo): Promise<Geo> {
-    return await this.geoRepository.save(geo);
+  async createContact(contact: Contact): Promise<Contact> {
+    return await this.contactRepository.save(contact);
   }
 
   async updateUser(user: User): Promise<UpdateResult> {
@@ -96,22 +87,17 @@ export class UsersService {
   async updateAddress(address: Address): Promise<UpdateResult> {
     return await this.addressRepository.update(address.id, address);
   }
-  async updateCompany(company: Company): Promise<UpdateResult> {
-    return await this.companyRepository.update(company.id, company);
+  async updateContact(contact: Contact): Promise<UpdateResult> {
+    return await this.contactRepository.update(contact.id, contact);
   }
-  async updateGeo(geo: Geo): Promise<UpdateResult> {
-    return await this.geoRepository.update(geo.id, geo);
-  }
+
   async deleteUser(id): Promise<DeleteResult> {
     return await this.userRepository.delete(id);
   }
   async deleteAddress(id): Promise<DeleteResult> {
     return await this.addressRepository.delete(id);
   }
-  async deleteCompany(id): Promise<DeleteResult> {
-    return await this.companyRepository.delete(id);
-  }
-  async deleteGeo(id): Promise<DeleteResult> {
-    return await this.geoRepository.delete(id);
+  async deleteContact(id): Promise<DeleteResult> {
+    return await this.contactRepository.delete(id);
   }
 }

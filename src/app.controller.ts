@@ -9,14 +9,14 @@ export class AppController {
   constructor(private readonly appService: AppService, 
     private http: HttpService ) {}
 
-  @Get('teste')
+  @Get()
   getHello(): string {
     return this.appService.getHello();
   }
 
-  @Get()
-  jsonShow() {
-    return this.appService.jsonShow();   
-  }
+  // @Get()
+  // jsonShow() {
+  //   return this.appService.jsonShow();   
+  // }
 
 }

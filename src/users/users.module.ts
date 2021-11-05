@@ -4,8 +4,7 @@ import { UsersController } from './users.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Address } from './entities/address.entity';
-import { Company } from './entities/company.entity';
-import { Geo } from './entities/geo.entity';
+import { Contact } from './entities/contact.entity';
 import { HttpModule, HttpService } from '@nestjs/axios';
 @Module({
   controllers: [UsersController],
@@ -13,7 +12,7 @@ import { HttpModule, HttpService } from '@nestjs/axios';
   imports: [
     HttpModule,
     //HttpService,
-    TypeOrmModule.forFeature([User, Address, Company, Geo]),
+    TypeOrmModule.forFeature([User, Address, Contact]),
   ]
 })
 export class UsersModule {}

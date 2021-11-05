@@ -32,13 +32,22 @@
     "@nestjsx/crud": "^5.0.0-alpha.3",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
+    "@angular/common": "^8.0.0",
+    "@angular/compiler": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "@angular/forms": "^8.0.0",
+    "@angular/platform-browser": "^8.0.0",
+    "@angular/platform-browser-dynamic": "^8.0.0",
+    "@angular/router": "^8.0.0",
     "dotenv": "^10.0.0",
     "pg": "^8.7.1",
     "postgres": "^1.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "typeorm": "^0.2.38"
+    "typeorm": "^0.2.38",
+    "sequelize": "^6.9.0",
+    "zone.js": "^0.9.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
