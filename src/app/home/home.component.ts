@@ -1,8 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User } from '@/_models';
-import { UserService, AuthenticationService } from '@/_services';
+import { User } from '../_models';
+import { AuthenticationService } from '../_services';
+import { UsersService } from "users/users.service";
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService
+        private userService: UsersService
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
@@ -21,14 +22,10 @@ export class HomeComponent implements OnInit {
     }
 
     deleteUser(id: number) {
-        this.userService.delete(id)
-            .pipe(first())
-            .subscribe(() => this.loadAllUsers());
+        this.userService.deleteUser(id);
     }
 
     private loadAllUsers() {
-        this.userService.getAll()
-            .pipe(first())
-            .subscribe(users => this.users = users);
+        this.userService.findAllUser();
     }
 }

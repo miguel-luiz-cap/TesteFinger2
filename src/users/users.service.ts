@@ -51,7 +51,7 @@ export class UsersService {
       for(let i=0; i < res.data.length ; i++) {
         this.userRepository.update(res.data[i].id, { 
           name: res.data[i].name,
-          username: res.data[i].username,
+          email: res.data[i].email,
           email: res.data[i].email,
           phone: res.data[i].phone,
           website: res.data[i].website

@@ -21,6 +21,13 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@angular/common": "^8.0.0",
+    "@angular/compiler": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "@angular/forms": "^8.0.0",
+    "@angular/platform-browser": "^8.0.0",
+    "@angular/platform-browser-dynamic": "^8.0.0",
+    "@angular/router": "^8.0.0",
     "@nestjs/axios": "0.0.3",
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
@@ -32,21 +39,17 @@
     "@nestjsx/crud": "^5.0.0-alpha.3",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
-    "@angular/common": "^8.0.0",
-    "@angular/compiler": "^8.0.0",
-    "@angular/core": "^8.0.0",
-    "@angular/forms": "^8.0.0",
-    "@angular/platform-browser": "^8.0.0",
-    "@angular/platform-browser-dynamic": "^8.0.0",
-    "@angular/router": "^8.0.0",
+    "core-js": "^3.19.1",
     "dotenv": "^10.0.0",
     "pg": "^8.7.1",
     "postgres": "^1.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "typeorm": "^0.2.38",
     "sequelize": "^6.9.0",
+    "typeorm": "^0.2.38",
+    "xhr2": "^0.2.1",
+    "xmlhttprequest-ssl": "^2.0.0",
     "zone.js": "^0.9.1"
   },
   "devDependencies": {
@@ -69,7 +72,17 @@
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "^3.10.1",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.7.0",
+    "angular2-template-loader": "^0.6.2",
+    "css-loader": "^2.1.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "style-loader": "^0.23.1"
   },
   "jest": {
     "moduleFileExtensions": [

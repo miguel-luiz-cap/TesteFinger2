@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // used to create fake backend
-import { fakeBackendProvider } from './app/_helpers';
+//import { fakeBackendProvider } from './app/_helpers';
 
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor, ErrorInterceptor } from './app/_helpers';
@@ -42,11 +42,11 @@ import { AlertComponent } from './app/_components';
     HttpModule,
     UsersModule,
     ScheduleModule.forRoot(),
+    
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-
 @NgModule({
   imports: [
       BrowserModule,
@@ -66,7 +66,7 @@ import { AlertComponent } from './app/_components';
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
       // provider used to create fake backend
-      fakeBackendProvider
+      //fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
